@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.FragmentEdit">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/buttonEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Edit"
+            app:layout_constraintEnd_toEndOf="@+id/hoursText3"
+            app:layout_constraintStart_toStartOf="@+id/switchDone"
+            app:layout_constraintTop_toBottomOf="@+id/switchDone" />
+
+        <Button
+            android:id="@+id/buttonEditionBack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="back"
+            app:layout_constraintEnd_toEndOf="@+id/hoursText3"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/switchDone"
+            app:layout_constraintTop_toBottomOf="@+id/buttonEdit" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Type hours"
+            app:layout_constraintBottom_toTopOf="@+id/hoursText3"
+            app:layout_constraintStart_toStartOf="@+id/hoursText3" />
+
+        <EditText
+            android:id="@+id/nameText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
+            app:layout_constraintEnd_toEndOf="@+id/hoursText3"
+            app:layout_constraintStart_toStartOf="@+id/hoursText3" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Type name"
+            app:layout_constraintBottom_toTopOf="@+id/nameText3"
+            app:layout_constraintStart_toStartOf="@+id/nameText3" />
+
+        <EditText
+            android:id="@+id/hoursText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Switch
+            android:id="@+id/switchDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Switch"
+            app:layout_constraintStart_toStartOf="@+id/hoursText3"
+            app:layout_constraintTop_toBottomOf="@+id/hoursText3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

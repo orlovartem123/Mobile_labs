@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "943010997765",
+    "project_id": "tasktracker-7098f",
+    "storage_bucket": "tasktracker-7098f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943010997765:android:f95017b01bdc0ebe8bde6c",
+        "android_client_info": {
+          "package_name": "com.example.lab1v2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "943010997765-78adr8m7ul06h0dcm0stu5rraosfub8i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyVanF7_ybr3iRKbrPT1n_aEyGZSwLuqc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "943010997765-78adr8m7ul06h0dcm0stu5rraosfub8i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
