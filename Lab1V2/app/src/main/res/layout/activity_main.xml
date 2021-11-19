@@ -20,10 +20,12 @@
 
     <Button
         android:id="@+id/buttonAdd"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginBottom="15dp"
+        android:background="@color/red"
         android:text="@string/add"
         app:layout_constraintBottom_toTopOf="@+id/buttonFilter"
         app:layout_constraintEnd_toEndOf="@+id/filterText"

@@ -6,33 +6,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
-import com.example.lab1v2.MainActivity;
 import com.example.lab1v2.R;
-import com.example.lab1v2.model.Task;
+import com.example.lab1v2.model.Monkey;
 
-public class TaskAdapter extends BaseAdapter {
+import java.util.List;
 
-    private final MainActivity activity;
+public class MonkeyViewAdapter extends BaseAdapter {
 
-    public TaskAdapter(MainActivity activity) {
-        this.activity = activity;
+    private final List<Monkey> monkeys;
+
+    public MonkeyViewAdapter(List<Monkey> monkeys) {
+        this.monkeys = monkeys;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public int getCount() {
-        return activity.getRepository().findAll() == null ? 0 : activity.getRepository().findAll().size();
+        return monkeys.size();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public Task getItem(int i) {
-        return activity.getRepository().findAll().get(i);
+    public Monkey getItem(int i) {
+        return monkeys.get(i);
     }
 
     @Override
@@ -47,27 +45,22 @@ public class TaskAdapter extends BaseAdapter {
 
         if (view == null) {
             result = LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.item, viewGroup, false);
+                    .inflate(R.layout.item_view, viewGroup, false);
         } else {
             result = view;
         }
 
-        Task item = getItem(i);
+        Monkey item = getItem(i);
 
         TextView textName = result.findViewById(R.id.textName);
         textName.setText(item.getName());
 
         TextView textHours = result.findViewById(R.id.textHours);
-        String text = item.getHours() + "h";
+        String text = item.getWeight() + " kg";
         textHours.setText(text);
 
         CheckBox checkBox = result.findViewById(R.id.checkBoxDone);
-        checkBox.setChecked(item.isDone());
-
-        ImageButton buttonEdit = result.findViewById(R.id.imageButtonUpdate);
-        buttonEdit.setOnClickListener(button -> activity.showEditFragment(item));
-        ImageButton buttonDelete = result.findViewById(R.id.imageButtonDelete);
-        buttonDelete.setOnClickListener(button -> activity.showDeleteFragment(item.getId()));
+        checkBox.setChecked(item.isWild());
 
         return result;
     }

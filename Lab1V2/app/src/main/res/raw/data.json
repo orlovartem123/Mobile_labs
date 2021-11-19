@@ -1,1 +1,26 @@
-[{"id":1,"name":"ДЗ","hours":4,"isDone":false},{"id":2,"name":"Поспать","hours":8,"isDone":false},{"id":3,"name":"Покушать питсу","hours":2,"isDone":true},{"id":4,"name":"Поадихать","hours":4,"isDone":false},{"id":5,"name":"Послушать музыку","hours":3,"isDone":true},{"id":6,"name":"Почитать","hours":1,"isDone":false},{"id":7,"name":"Еще раз поспать","hours":12,"isDone":false},{"id":8,"name":"Поиграть в компуктер","hours":8,"isDone":true}]
+[
+  {
+    "id": 1,
+    "name": "Макака",
+    "weight": 4,
+    "isWild": false
+  },
+  {
+    "id": 2,
+    "name": "Горила",
+    "weight": 8,
+    "isWild": false
+  },
+  {
+    "id": 3,
+    "name": "Шимпанзе",
+    "weight": 2,
+    "isWild": true
+  },
+  {
+    "id": 4,
+    "name": "Бубуин",
+    "weight": 4,
+    "isWild": false
+  }
+]

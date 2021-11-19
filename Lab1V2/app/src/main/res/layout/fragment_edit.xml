@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="Type hours"
+            android:text="Type weight"
             app:layout_constraintBottom_toTopOf="@+id/hoursText3"
             app:layout_constraintStart_toStartOf="@+id/hoursText3" />
 
@@ -77,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Switch"
+            android:text="Wild"
             app:layout_constraintStart_toStartOf="@+id/hoursText3"
             app:layout_constraintTop_toBottomOf="@+id/hoursText3" />
 

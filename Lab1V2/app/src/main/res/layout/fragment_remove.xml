@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:text="Are you sure you want to delete entries?"
+            android:text="Are you sure you want to delete monkeys?"
             app:layout_constraintBottom_toTopOf="@+id/buttonLoad"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

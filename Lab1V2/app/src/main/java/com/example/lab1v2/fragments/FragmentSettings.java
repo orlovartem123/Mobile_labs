@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.lab1v2.MainActivity;
 import com.example.lab1v2.R;
-import com.example.lab1v2.model.Task;
+import com.example.lab1v2.model.Monkey;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -66,11 +66,11 @@ public class FragmentSettings extends Fragment {
         InputStream inputStream = getResources().openRawResource(R.raw.data);
         try (Reader fileReader = new InputStreamReader(inputStream)) {
             Gson gson = new Gson();
-            Type targetClassType = new TypeToken<ArrayList<Task>>(){}.getType();
-            List<Task> tasks = gson.fromJson(fileReader, targetClassType);
+            Type targetClassType = new TypeToken<ArrayList<Monkey>>(){}.getType();
+            List<Monkey> monkeys = gson.fromJson(fileReader, targetClassType);
 
             MainActivity activity = (MainActivity) getActivity();
-            activity.getRepository().setBackUp(tasks);
+            activity.getRepository().setBackUp(monkeys);
             activity.showListFragment();
         } catch (IOException e) {
             e.printStackTrace();

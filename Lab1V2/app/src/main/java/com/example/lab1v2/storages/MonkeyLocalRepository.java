@@ -7,7 +7,7 @@ import android.preference.PreferenceManager;
 
 import androidx.annotation.RequiresApi;
 
-import com.example.lab1v2.model.Task;
+import com.example.lab1v2.model.Monkey;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -16,67 +16,67 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class TaskLocalRepository implements TaskRepository {
+public class MonkeyLocalRepository implements MonkeyRepository {
 
     private final Context context;
-    private List<Task> tasks;
+    private List<Monkey> monkeys;
 
-    public TaskLocalRepository(Context context) {
+    public MonkeyLocalRepository(Context context) {
         this.context = context;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void init() {
-        tasks = new ArrayList<>();
+        monkeys = new ArrayList<>();
         SharedPreferences data = PreferenceManager.getDefaultSharedPreferences(context);
         String stringData = data.getString("data", "");
 
-        Type targetClassType = new TypeToken<ArrayList<Task>>() {}.getType();
+        Type targetClassType = new TypeToken<ArrayList<Monkey>>() {}.getType();
         //tasks = new Gson().fromJson(stringData, targetClassType);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public List<Task> findAll() {
-        if (tasks == null) {
+    public List<Monkey> findAll() {
+        if (monkeys == null) {
             init();
         }
-        return tasks;
+        return monkeys;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public Optional<Task> findById(Long id) {
-        if (tasks == null) {
+    public Optional<Monkey> findById(Long id) {
+        if (monkeys == null) {
             init();
         }
-        return tasks.stream()
+        return monkeys.stream()
                 .filter(t -> t.getId().equals(id))
                 .findFirst();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public void save(Task task) {
-        Optional<Task> savedTask = findById(task.getId());
+    public void save(Monkey monkey) {
+        Optional<Monkey> savedTask = findById(monkey.getId());
 
         if (savedTask.isPresent()) {
-            Task taskToUpdate = savedTask.get();
-            taskToUpdate.setName(task.getName());
-            taskToUpdate.setHours(task.getHours());
-            taskToUpdate.setDone(task.isDone());
+            Monkey monkeyToUpdate = savedTask.get();
+            monkeyToUpdate.setName(monkey.getName());
+            monkeyToUpdate.setWeight(monkey.getWeight());
+            monkeyToUpdate.setWild(monkey.isWild());
         } else {
-            task.setId(getId());
-            tasks.add(task);
+            monkey.setId(getId());
+            monkeys.add(monkey);
         }
 
-        saveArray(tasks);
+        saveArray(monkeys);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private Long getId() {
-        long maxId = tasks.stream()
-                .mapToLong(Task::getId)
+        long maxId = monkeys.stream()
+                .mapToLong(Monkey::getId)
                 .max().orElse(0);
 
         return maxId + 1;
@@ -85,23 +85,23 @@ public class TaskLocalRepository implements TaskRepository {
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void deleteById(Long id) {
-        Optional<Task> savedTask = findById(id);
+        Optional<Monkey> savedTask = findById(id);
         if (savedTask.isPresent()) {
-            tasks.remove(savedTask.get());
-            saveArray(tasks);
+            monkeys.remove(savedTask.get());
+            saveArray(monkeys);
         }
     }
 
     @Override
-    public void setBackUp(List<Task> tasks) {
-        this.tasks = tasks;
-        saveArray(tasks);
+    public void setBackUp(List<Monkey> monkeys) {
+        this.monkeys = monkeys;
+        saveArray(monkeys);
     }
 
-    private void saveArray(List<Task> tasks) {
+    private void saveArray(List<Monkey> monkeys) {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putString("data", new Gson().toJson(tasks));
+        editor.putString("data", new Gson().toJson(monkeys));
         editor.apply();
     }
 }

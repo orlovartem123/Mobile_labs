@@ -15,14 +15,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.lab1v2.MainActivity;
 import com.example.lab1v2.R;
-import com.example.lab1v2.model.Task;
+import com.example.lab1v2.model.Monkey;
 
 public class FragmentEdit extends Fragment {
 
-    private final Task task;
+    private final Monkey monkey;
 
-    public FragmentEdit(Task task) {
-        this.task = task;
+    public FragmentEdit(Monkey monkey) {
+        this.monkey = monkey;
     }
 
     @Override
@@ -37,13 +37,13 @@ public class FragmentEdit extends Fragment {
         View view = inflater.inflate(R.layout.fragment_edit, container, false);
 
         EditText textName = view.findViewById(R.id.nameText3);
-        textName.setText(task.getName());
+        textName.setText(monkey.getName());
         EditText textHours = view.findViewById(R.id.hoursText3);
-        textHours.setText(String.valueOf(task.getHours()));
+        textHours.setText(String.valueOf(monkey.getWeight()));
 
         @SuppressLint("UseSwitchCompatOrMaterialCode")
         Switch switchDone = view.findViewById(R.id.switchDone);
-        switchDone.setChecked(task.isDone());
+        switchDone.setChecked(monkey.isWild());
 
         Button buttonEdit = view.findViewById(R.id.buttonEdit);
         buttonEdit.setOnClickListener(action -> editTask(textName, textHours, switchDone));
@@ -56,13 +56,13 @@ public class FragmentEdit extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void editTask(EditText textName, EditText textHours, @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switchDone) {
-        task.setName(textName.getText().toString());
-        task.setHours(Integer.parseInt(textHours.getText().toString()));
-        task.setDone(switchDone.isChecked());
+        monkey.setName(textName.getText().toString());
+        monkey.setWeight(Integer.parseInt(textHours.getText().toString()));
+        monkey.setWild(switchDone.isChecked());
 
         MainActivity activity = (MainActivity) getActivity();
         if (activity != null) {
-            activity.getRepository().save(task);
+            activity.getRepository().save(monkey);
             activity.showListFragment();
         }
     }

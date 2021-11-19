@@ -18,29 +18,39 @@ import com.example.lab1v2.fragments.FragmentEdit;
 import com.example.lab1v2.fragments.FragmentList;
 import com.example.lab1v2.fragments.FragmentRemove;
 import com.example.lab1v2.fragments.FragmentSettings;
-import com.example.lab1v2.model.Task;
-import com.example.lab1v2.storages.TaskLocalRepository;
+import com.example.lab1v2.model.Monkey;
+import com.example.lab1v2.storages.MonkeyLocalRepository;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TaskLocalRepository repository;
+    private MonkeyLocalRepository repository;
 
-    public TaskLocalRepository getRepository(){
+    public MonkeyLocalRepository getRepository() {
         return repository;
     }
 
     public void changeRepository() {
         SharedPreferences data = PreferenceManager.getDefaultSharedPreferences(this);
         boolean useDb = data.getBoolean("rep", false);
-        this.repository = new TaskLocalRepository(this);
+        this.repository = new MonkeyLocalRepository(this);
 //        if (useDb) {
 //            this.repository = new TaskDbRepository(this);
 //        } else {
 //            this.repository = new TaskLocalRepository(this);
 //        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void setChecked() {
+        List<Monkey> repo = repository.findAll();
+        for (Monkey monkey : repo) {
+            monkey.setWild(true);
+            repository.save(monkey);
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -56,13 +66,16 @@ public class MainActivity extends AppCompatActivity {
 
         showListFragment();
 
-        buttonFilter.setOnClickListener(view -> filter());
+        buttonFilter.setOnClickListener(view -> {
+            //filter();
+            //setChecked();
+        });
         buttonAdd.setOnClickListener(view -> setFragment(new FragmentAdd()));
         buttonSettings.setOnClickListener(view -> setFragment(new FragmentSettings()));
     }
 
-    public void showEditFragment(Task task) {
-        setFragment(new FragmentEdit(task));
+    public void showEditFragment(Monkey monkey) {
+        setFragment(new FragmentEdit(monkey));
     }
 
     public void showDeleteFragment(Long id) {
@@ -83,9 +96,9 @@ public class MainActivity extends AppCompatActivity {
     public void filter() {
         EditText filterTextPlain = findViewById(R.id.filterText);
         String filterText = filterTextPlain.getText().toString();
-        Task[] filtered = repository.findAll().stream()
+        Monkey[] filtered = repository.findAll().stream()
                 .filter(s -> s.getName().toLowerCase(Locale.ROOT).startsWith(filterText.toLowerCase(Locale.ROOT)))
-                .toArray(Task[]::new);
+                .toArray(Monkey[]::new);
 
         Intent myIntent = new Intent(this, ActivityFilter.class);
         myIntent.putExtra("list", filtered);

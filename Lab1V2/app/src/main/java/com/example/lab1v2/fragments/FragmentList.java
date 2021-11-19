@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.lab1v2.MainActivity;
 import com.example.lab1v2.R;
-import com.example.lab1v2.fragments.adapter.TaskAdapter;
+import com.example.lab1v2.fragments.adapter.MonkeyAdapter;
 
 public class FragmentList extends Fragment {
 
@@ -29,7 +29,7 @@ public class FragmentList extends Fragment {
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         //listView.setItemsCanFocus(false);
         MainActivity activity = (MainActivity) getActivity();
-        listView.setAdapter(new TaskAdapter(activity));
+        listView.setAdapter(new MonkeyAdapter(activity));
 
         return view;
     }

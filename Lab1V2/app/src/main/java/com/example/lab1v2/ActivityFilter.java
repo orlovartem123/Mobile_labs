@@ -6,8 +6,8 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.lab1v2.fragments.adapter.TaskViewAdapter;
-import com.example.lab1v2.model.Task;
+import com.example.lab1v2.fragments.adapter.MonkeyViewAdapter;
+import com.example.lab1v2.model.Monkey;
 
 import java.util.Arrays;
 
@@ -21,8 +21,8 @@ public class ActivityFilter extends AppCompatActivity {
         ListView listView = findViewById(R.id.filterList);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listView.setItemsCanFocus(false);
-        Task[] tasks = (Task[]) getIntent().getSerializableExtra("list");
-        listView.setAdapter(new TaskViewAdapter(Arrays.asList(tasks)));
+        Monkey[] monkeys = (Monkey[]) getIntent().getSerializableExtra("list");
+        listView.setAdapter(new MonkeyViewAdapter(Arrays.asList(monkeys)));
 
         Button back = findViewById(R.id.buttonBack);
         back.setOnClickListener(view -> finish());
